@@ -9,7 +9,7 @@ const resolve = require('path').resolve;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 用于查看打包相关的信息
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const url = require('url');
 
@@ -68,10 +68,10 @@ module.exports = (options = {}) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false
     })
+    // new BundleAnalyzerPlugin({
+    //   openAnalyzer: false
+    // })
   ],
   performance: {
     hints: false
