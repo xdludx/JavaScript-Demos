@@ -8,6 +8,9 @@ const resolve = require('path').resolve;
 // https://doc.webpack-china.org/plugins/html-webpack-plugin/
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// 用于查看打包相关的信息
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const url = require('url');
 
 const publicPath = '';
@@ -65,6 +68,9 @@ module.exports = (options = {}) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false
     })
   ],
   performance: {
