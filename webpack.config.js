@@ -15,6 +15,8 @@ const url = require('url');
 
 const publicPath = '';
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = (options = {}) => ({
   entry: {
     index: './src/scripts/main.js'
@@ -39,8 +41,14 @@ module.exports = (options = {}) => ({
         use: ['style-loader', 'css-loader', 'postcss-loader']
       }, {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader?sourceMap', 'postcss-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       }, {
+      //   test: /\.scss$/,
+      //   use: ['style-loader', 'css-loader', 'sass-loader?sourceMap', 'postcss-loader']
+      // }, {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
         use: [{
           loader: 'url-loader',
@@ -68,7 +76,8 @@ module.exports = (options = {}) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    })
+    }),
+    new ExtractTextPlugin('style.css')
     // new BundleAnalyzerPlugin({
     //   openAnalyzer: false
     // })
