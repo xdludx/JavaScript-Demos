@@ -3,6 +3,8 @@
     <div>
       <el-button @click="startHacking">Starts</el-button>
     </div>
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -23,7 +25,6 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: Helvetica, sans-serif;
-  text-align: center;
+  height: 100%;
 }
 </style>
