@@ -15,6 +15,7 @@ const url = require('url');
 
 const publicPath = '';
 
+// 打包默认将css放到页面的style标签中，extract-text-webpack-plugin可以将css文件提取到一个单独的style.css文件。
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (options = {}) => ({
@@ -35,7 +36,24 @@ module.exports = (options = {}) => ({
         exclude: /node_modules/
       }, {
         test: /\.vue$/,
-        use: ['vue-loader']
+        use: {
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+              scss: [
+                'vue-style-loader',
+                'css-loader',
+                'sass-loader',
+                {
+                  loader: 'sass-resources-loader',
+                  options: {
+                    resources: resolve(__dirname, './src/styles/common/global.scss')
+                  }
+                }
+              ]
+            }
+          }
+        }
       }, {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader']
