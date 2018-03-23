@@ -93,7 +93,8 @@ module.exports = (options = {}) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/index.html',
+      favicon: 'src/images/favicon.ico'
     }),
     new ExtractTextPlugin('style.css')
     // new BundleAnalyzerPlugin({
