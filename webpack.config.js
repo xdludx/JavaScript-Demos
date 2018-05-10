@@ -2,7 +2,7 @@
 // http://javascript.ruanyifeng.com/nodejs/path.html#toc1
 const resolve = require('path').resolve;
 // webpack 自带的插件
-// const webpack = require('webpack');
+const webpack = require('webpack');
 
 // html-webpack-plugin用于生成一个html5文件
 // https://doc.webpack-china.org/plugins/html-webpack-plugin/
@@ -96,7 +96,11 @@ module.exports = (options = {}) => ({
       template: 'src/index.html',
       favicon: 'src/images/favicon.ico'
     }),
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+    // DefinePlugin定义全局变量
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify("5fa3b9")
+    })
     // new BundleAnalyzerPlugin({
     //   openAnalyzer: false
     // })

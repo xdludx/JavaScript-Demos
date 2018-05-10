@@ -6,6 +6,7 @@ import 'Styles/index.scss';
 import routes from './router';
 import App from '../App.vue';
 import Header from './common/header.vue';
+import Menu from './common/menu.vue';
 
 Vue.use(ElementUI);
 
@@ -17,6 +18,7 @@ const router = new VueRouter({
 });
 
 Vue.component(Header.name, Header);
+Vue.component(Menu.name, Menu);
 
 new Vue({
   router,

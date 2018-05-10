@@ -14,7 +14,9 @@
         <l-header></l-header>
       </el-header>
       <el-container class="main-container">
-        <el-aside width="200px">Aside</el-aside>
+        <el-aside width="200px">
+          <l-menu></l-menu>
+        </el-aside>
         <el-main>
           <transition name="slide" mode="out-in">
             <router-view></router-view>
@@ -41,15 +43,16 @@
     left: 0;
     width: 100%;
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    z-index: 1000;
   }
   .main-container {
     min-height: 100%;
   }
   .el-aside {
-    background-color: #D3DCE6;
+    // background-color: #D3DCE6;
     color: #333;
-    text-align: center;
-    line-height: 200px;
+    // text-align: center;
+    // line-height: 200px;
   }
   .el-footer {
     background-color: #B3C0D1;
